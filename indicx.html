@@ -1,159 +1,190 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Os Guardiões do Arco-Íris</title>
-  <style>
-    /* Estilos Globais */
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-image: url('https://via.placeholder.com/1920x1080?text=Background+Colorido');
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: white;
-      text-shadow: 1px 1px 2px #000;
-    }
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fluxograma - Jornada da Moana</title>
+    <style>
+      /* Fundo geral */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        background-image: url('https://wallpapercave.com/wp/wp2578911.jpg'); /* Imagem tropical */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
 
-    header {
-      text-align: center;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.6);
-    }
+      /* Cabeçalho */
+      .header-container {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        text-align: center;
+      }
 
-    header h1 {
-      font-size: 3em;
-      margin: 0;
-    }
+      .logo {
+        font-size: 2.5em;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        color: #ffd700; /* Dourado */
+      }
 
-    header p {
-      font-size: 1.5em;
-    }
+      /* Fluxograma */
+      .fluxograma {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        padding-bottom: 50px;
+      }
 
-    main {
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 15px;
-      margin: 20px auto;
-      max-width: 1200px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    }
+      /* Caixas de etapas */
+      .caixa {
+        background-color: rgba(0, 0, 128, 0.7); /* Azul-marinho translúcido */
+        padding: 20px;
+        border-radius: 15px;
+        margin: 15px;
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
 
-    .introducao, .guardioes, .aventura {
-      margin-bottom: 40px;
-    }
+      .caixa:hover {
+        transform: scale(1.05); /* Leve zoom ao passar o mouse */
+      }
 
-    .introducao img, .aventura img {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 20px;
-    }
+      .caixa img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
 
-    .guardioes {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
+      /* Setas */
+      .seta {
+        font-size: 2.5em;
+        color: #ffd700; /* Dourado */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+      }
 
-    .personagem {
-      text-align: center;
-      margin: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      flex: 1 1 30%;
-    }
+      /* Detalhes */
+      .detalhes {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 400px;
+        z-index: 1000;
+      }
 
-    .personagem img {
-      max-width: 150px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
+      .detalhes h3 {
+        color: #ffd700; /* Dourado */
+        margin-top: 0;
+      }
 
-    .aventura img {
-      max-width: 100%;
-      border-radius: 15px;
-      margin: 20px 0;
-    }
+      .detalhes img {
+        width: 100%;
+        margin-top: 15px;
+        border-radius: 10px;
+      }
 
-    .voltar-topo {
-      display: block;
-      text-align: center;
-      margin: 40px auto;
-      padding: 15px 30px;
-      background-color: #f8d90f;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 10px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    }
+      .fechar {
+        display: inline-block;
+        background-color: #ff4500; /* Laranja vibrante */
+        color: #fff;
+        padding: 10px 20px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+      }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #f8d90f;
-    }
+      .fechar:hover {
+        background-color: #cc3700; /* Laranja escuro */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="logo">A Jornada de Moana</div>
+    </div>
 
-    footer a {
-      color: #f8d90f;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Os Guardiões do Arco-Íris</h1>
-    <p>Uma aventura cheia de cores, amizade e magia!</p>
-  </header>
-
-  <main>
-    <section class="introducao">
-      <h2>Bem-vindo à Terra das Cores</h2>
-      <p>Na Terra das Cores, a harmonia sempre reinou graças ao Arco-Íris Mágico, que traz felicidade e vida a todos. Mas algo sombrio começou a acontecer: as cores começaram a desaparecer misteriosamente. Os Guardiões foram convocados para proteger o reino e restaurar o equilíbrio!</p>
-      <img src="https://img.freepik.com/fotos-gratis/um-arco-iris-de-sonho-num-campo_23-2151625173.jpg?semt=ais_hybrid<"?semt=ais_hybrid?text=Paisagem+Colorida" alt="Arco-Íris sobre a vila">
-    </section>
-
-    <section class="guardioes">
-      <h2>Conheça os Guardiões</h2>
-      <div class="personagem">
-        <img src="https://via.placeholder.com/200x200?text=Luna" alt="Luna">
-        <h3>Luna</h3>
-        <p>Com suas asas de cristal, Luna espalha luz e esperança por onde passa. Ela é a líder destemida do grupo.</p>
+    <div class="fluxograma">
+      <!-- Etapa 1 -->
+      <div class="caixa" onclick="mostrarDetalhes(1)">
+        <img src="https://i.imgur.com/TpJTSHr.jpg" alt="Moana criança" />
+        <p>Moana descobre seu amor pelo mar desde pequena.</p>
       </div>
-      <div class="personagem">
-        <img src="https://via.placeholder.com/200x200?text=Bolt" alt="Bolt">
-        <h3>Bolt</h3>
-        <p>Bolt é o mais rápido do grupo e usa seus poderes elétricos para enfrentar desafios e iluminar o caminho.</p>
+
+      <div class="seta">↓</div>
+
+      <!-- Etapa 2 -->
+      <div class="caixa" onclick="mostrarDetalhes(2)">
+        <img src="https://i.imgur.com/Uuvk2LY.jpg" alt="Ilha de Motunui" />
+        <p>A ilha de Motunui começa a sofrer com a escassez de recursos.</p>
       </div>
-      <div class="personagem">
-        <img src="https://via.placeholder.com/200x200?text=Ziggy" alt="Ziggy">
-        <h3>Ziggy</h3>
-        <p>Ziggy é o coração do time. Com seu dom de cura, ele ajuda a manter todos unidos e prontos para a ação.</p>
+
+      <div class="seta">↓</div>
+
+      <!-- Etapa 3 -->
+      <div class="caixa" onclick="mostrarDetalhes(3)">
+        <img src="https://i.imgur.com/s21hL2M.jpg" alt="Moana e Maui" />
+        <p>Moana parte para encontrar Maui e restaurar o coração de Te Fiti.</p>
       </div>
-    </section>
 
-    <section class="aventura">
-      <h2>A Grande Aventura</h2>
-      <p>Os Guardiões descobriram que *Sombróx*, um espírito das trevas, roubou as cores para mergulhar o mundo na escuridão eterna. Para derrotá-lo, eles precisam coletar as Essências do Arco-Íris espalhadas por terras misteriosas.</p>
-      <img src="https://via.placeholder.com/800x400?text=Os+Guardiões+em+ação" alt="Os Guardiões em Ação">
-      <p>A jornada é repleta de desafios: desfiladeiros mágicos, florestas encantadas e labirintos de cristal. Em cada lugar, eles enfrentam perigos e aprendem lições sobre coragem, trabalho em equipe e o poder da amizade.</p>
-    </section>
+      <div class="seta">↓</div>
 
-    <a href="#header" class="voltar-topo">Voltar ao topo</a>
-  </main>
+      <!-- Etapa 4 -->
+      <div class="caixa" onclick="mostrarDetalhes(4)">
+        <img src="https://i.imgur.com/5DfNdeJ.jpg" alt="Te Fiti" />
+        <p>Com coragem, Moana enfrenta Te Kā e devolve o coração a Te Fiti.</p>
+      </div>
 
-  <footer>
-    <p>&copy; 2024 Os Guardiões do Arco-Íris</p>
-    <p>Explore mais histórias mágicas em <a href="#">nosso site oficial</a>.</p>
-  </footer>
-</body>
+      <div class="seta">↓</div>
+
+      <!-- Etapa 5 -->
+      <div class="caixa" onclick="mostrarDetalhes(5)">
+        <img src="https://i.imgur.com/zZ3xVvb.jpg" alt="Motunui restaurada" />
+        <p>Moana retorna para Motunui, trazendo vida e equilíbrio à ilha.</p>
+      </div>
+    </div>
+
+    <!-- Caixa de Detalhes -->
+    <div class="detalhes" id="detalhesCaixa1">
+      <h3>Moana criança</h3>
+      <p>Desde pequena, Moana sente uma conexão especial com o oceano, mas seu pai a proíbe de navegar.</p>
+      <img src="https://i.imgur.com/TpJTSHr.jpg" alt="Moana criança" />
+      <button class="fechar" onclick="fecharDetalhes()">Fechar</button>
+    </div>
+
+    <!-- Outros detalhes aqui para as etapas 2 a 5 -->
+
+    <script>
+      function mostrarDetalhes(etapa) {
+        document.querySelectorAll('.detalhes').forEach(function (detalhe) {
+          detalhe.style.display = 'none';
+        });
+        var detalhesCaixa = document.getElementById('detalhesCaixa' + etapa);
+        detalhesCaixa.style.display = 'block';
+      }
+
+      function fecharDetalhes() {
+        document.querySelectorAll('.detalhes').forEach(function (detalhe) {
+          detalhe.style.display = 'none';
+        });
+      }
+    </script>
+  </body>
 </html>
